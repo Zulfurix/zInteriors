@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zInteriors_Client", "zInteriors_Client.csproj", "{1409F361-937A-4AA9-9B14-42D418516395}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zInteriors_Server", "zInteriors_Server\zInteriors_Server.csproj", "{EA9034B7-24D4-490B-B1BA-5D4FF5553A89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1409F361-937A-4AA9-9B14-42D418516395}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1409F361-937A-4AA9-9B14-42D418516395}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1409F361-937A-4AA9-9B14-42D418516395}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1409F361-937A-4AA9-9B14-42D418516395}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA9034B7-24D4-490B-B1BA-5D4FF5553A89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA9034B7-24D4-490B-B1BA-5D4FF5553A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA9034B7-24D4-490B-B1BA-5D4FF5553A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA9034B7-24D4-490B-B1BA-5D4FF5553A89}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49A48281-670D-4963-9C7E-B0CE05AF3D85}
+	EndGlobalSection
+EndGlobal
