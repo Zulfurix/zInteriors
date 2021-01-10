@@ -6,13 +6,13 @@ using static CitizenFX.Core.Native.API;
 
 namespace zInteriors_Client
 {
-    public class MarkerDrawHandler : BaseScript
+    public class DrawHandler : BaseScript
     {
         private readonly Vector3 MARKER_VECTOR3_DIMENSIONS = new Vector3(1, 1, 1);
         private readonly System.Drawing.Color MARKER_COLOR = System.Drawing.Color.FromArgb(175, 0, 155, 225);
         private readonly float MARKER_DRAW_DISTANCE = 30f;
 
-        public MarkerDrawHandler()
+        public DrawHandler()
         {
             EventHandlers["onClientResourceStart"] += new Action<string>(OnClientResourceStart);
             EventHandlers["zInteriors:drawFollowingMarker"] += new Action(DrawFollowingMarker);

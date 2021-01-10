@@ -50,9 +50,9 @@
   <ItemGroup>
     <Compile Include="CommandHandler.cs" />
     <Compile Include="Interior.cs" />
-    <Compile Include="InteriorCreationState.cs" />
+    <Compile Include="CreationState.cs" />
     <Compile Include="InteriorHandler.cs" />
-    <Compile Include="MarkerDrawHandler.cs" />
+    <Compile Include="DrawHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextInput.cs" />
   </ItemGroup>

@@ -23,7 +23,7 @@ namespace zInteriors_Client
             RegisterCommand("createinterior", new Action<int, List<object>, string>((source, args, raw) =>
             {
 
-                if (InteriorCreationState.PlayerCreationState == InteriorCreationState.State.NOT_CREATING_INTERIOR)
+                if (CreationState.PlayerCreationState == CreationState.State.NOT_CREATING_INTERIOR)
                 {
                     TriggerEvent("chat:addMessage", new
                     {
@@ -31,7 +31,7 @@ namespace zInteriors_Client
                         args = new[] { "[zInteriors]", $"Type /place to place down the entrance marker" }
                     });
 
-                    InteriorCreationState.PlayerCreationState = InteriorCreationState.State.PLACING_ENTRANCE;
+                    CreationState.PlayerCreationState = CreationState.State.PLACING_ENTRANCE;
                     TriggerEvent("zInteriors:drawFollowingMarker");
                 }
                 else
@@ -50,8 +50,8 @@ namespace zInteriors_Client
             RegisterCommand("cancel", new Action<int, List<object>, string>((source, args, raw) =>
             {
 
-                if (InteriorCreationState.PlayerCreationState == InteriorCreationState.State.PLACING_ENTRANCE
-                || InteriorCreationState.PlayerCreationState == InteriorCreationState.State.PLACING_EXIT)
+                if (CreationState.PlayerCreationState == CreationState.State.PLACING_ENTRANCE
+                || CreationState.PlayerCreationState == CreationState.State.PLACING_EXIT)
                 {
                     TriggerEvent("chat:addMessage", new
                     {
@@ -59,7 +59,7 @@ namespace zInteriors_Client
                         args = new[] { "[zInteriors]", $"Interior creation cancelled" }
                     });
 
-                    InteriorCreationState.PlayerCreationState = InteriorCreationState.State.NOT_CREATING_INTERIOR;
+                    CreationState.PlayerCreationState = CreationState.State.NOT_CREATING_INTERIOR;
                     TriggerEvent("zInteriors:undrawFollowingMarker");
                     TriggerEvent("zInteriors:undrawTemporaryMarkers");
                 }
@@ -79,7 +79,7 @@ namespace zInteriors_Client
             RegisterCommand("place", new Action<int, List<object>, string>(async (source, args, raw) =>
             {
 
-                if (InteriorCreationState.PlayerCreationState == InteriorCreationState.State.PLACING_ENTRANCE)
+                if (CreationState.PlayerCreationState == CreationState.State.PLACING_ENTRANCE)
                 {
                     TriggerEvent("chat:addMessage", new
                     {
@@ -88,11 +88,11 @@ namespace zInteriors_Client
                     });
 
                     InteriorHandler.TempInterior = new Interior("Interior", Game.PlayerPed.Position + new Vector3(0, 0, -1), Vector3.Zero);
-                    InteriorCreationState.PlayerCreationState = InteriorCreationState.State.PLACING_EXIT;
+                    CreationState.PlayerCreationState = CreationState.State.PLACING_EXIT;
                     
                     TriggerEvent("zInteriors:drawTemporaryMarkers");
                 }
-                else if (InteriorCreationState.PlayerCreationState == InteriorCreationState.State.PLACING_EXIT)
+                else if (CreationState.PlayerCreationState == CreationState.State.PLACING_EXIT)
                 {
                     TriggerEvent("chat:addMessage", new
                     {
@@ -109,7 +109,7 @@ namespace zInteriors_Client
                         args = new[] { "[zInteriors]", $"Interior created: " + InteriorHandler.TempInterior.Name }
                     });
 
-                    InteriorCreationState.PlayerCreationState = InteriorCreationState.State.NOT_CREATING_INTERIOR;
+                    CreationState.PlayerCreationState = CreationState.State.NOT_CREATING_INTERIOR;
 
                     TriggerEvent("zInteriors:undrawFollowingMarker");
                     TriggerEvent("zInteriors:undrawTemporaryMarkers");

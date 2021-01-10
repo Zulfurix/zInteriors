@@ -1,6 +1,6 @@
 ﻿namespace zInteriors_Client
 {
-    static class InteriorCreationState
+    static class CreationState
     {
         public enum State
         {
