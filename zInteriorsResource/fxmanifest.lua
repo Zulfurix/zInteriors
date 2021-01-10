@@ -4,8 +4,8 @@ game 'gta5'
 file 'Newtonsoft.Json.dll'
 file 'Interiors/*.json'
 
-client_script 'Client/*.net.dll'
-server_script 'Server/*.net.dll'
+client_script '*.net.dll'
+server_script '*.net.dll'
 
 author 'Zulfurix'
 version '1.0.0'

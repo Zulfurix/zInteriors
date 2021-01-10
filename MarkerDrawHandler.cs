@@ -9,8 +9,8 @@ namespace zInteriors_Client
     public class MarkerDrawHandler : BaseScript
     {
         private readonly Vector3 MARKER_VECTOR3_DIMENSIONS = new Vector3(1, 1, 1);
-
         private readonly System.Drawing.Color MARKER_COLOR = System.Drawing.Color.FromArgb(175, 0, 155, 225);
+        private readonly float MARKER_DRAW_DISTANCE = 30f;
 
         public MarkerDrawHandler()
         {
@@ -19,6 +19,7 @@ namespace zInteriors_Client
             EventHandlers["zInteriors:undrawFollowingMarker"] += new Action(UndrawFollowingMarker);
             EventHandlers["zInteriors:drawTemporaryMarkers"] += new Action(DrawTemporaryMarkers);
             EventHandlers["zInteriors:undrawTemporaryMarkers"] += new Action(UndrawTemporaryMarkers);
+            EventHandlers["zInteriors:drawInteriorMarkers"] += new Action(DrawInteriorMarkers);
         }
 
         private void OnClientResourceStart(string resourceName)
@@ -42,6 +43,17 @@ namespace zInteriors_Client
                 World.DrawMarker(MarkerType.VerticalCylinder, InteriorHandler.TempInterior.Exit, Vector3.Zero, Vector3.Zero, MARKER_VECTOR3_DIMENSIONS, MARKER_COLOR);
         }
 
+        private async Task InteriorMarkersTick()
+        {
+            foreach (dynamic interior in InteriorHandler.Interiors)
+            {
+                if (Game.PlayerPed.IsInRangeOf(interior.Entrance, MARKER_DRAW_DISTANCE))
+                    World.DrawMarker(MarkerType.VerticalCylinder, interior.Entrance, Vector3.Zero, Vector3.Zero, MARKER_VECTOR3_DIMENSIONS, MARKER_COLOR);
+                if (Game.PlayerPed.IsInRangeOf(interior.Exit, MARKER_DRAW_DISTANCE))
+                    World.DrawMarker(MarkerType.VerticalCylinder, interior.Exit, Vector3.Zero, Vector3.Zero, MARKER_VECTOR3_DIMENSIONS, MARKER_COLOR);
+            }
+        }
+
         private void DrawFollowingMarker()
         {
             Tick += FollowingMarkerTick;
@@ -61,6 +73,11 @@ namespace zInteriors_Client
         private void UndrawTemporaryMarkers()
         {
             Tick -= TemporaryMarkersTick;
+        }
+
+        private void DrawInteriorMarkers()
+        {
+            Tick += InteriorMarkersTick;
         }
     }
 }
