@@ -38,7 +38,9 @@ namespace zInteriors_Client
             {
                 interiors = new List<dynamic>(parsedInteriors);
                 Debug.WriteLine(String.Format("Loaded {0} interiors", interiors.Count));
+
                 TriggerEvent("zInteriors:drawInteriorMarkers");
+                TriggerEvent("zInteriors:initTeleportHandler");
             }
         }
 
